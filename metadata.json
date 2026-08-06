@@ -1,0 +1,6 @@
+{
+  "name": "Tanik Portfolio",
+  "description": "A high-contrast, premium design portfolio with bold typography and smooth motion transitions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
