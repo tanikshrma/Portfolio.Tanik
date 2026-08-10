@@ -1,4 +1,4 @@
-# Project Name
+# Portfolio.Tanik
 
 A modern, responsive web application built with a clean and professional user interface.
 
