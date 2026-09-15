@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 
 export default function Stats() {
   const stats = [
-    { value: "1+ YEAR", label: "TOTAL EXPERIENCE" },
-    { value: "9+", label: "PROJECTS COMPLETED" },
+    { value: "2+ YEAR", label: "TOTAL EXPERIENCE" },
+    { value: "20+", label: "PROJECTS COMPLETED" },
     { value: "100%", label: "CLIENT SATISFACTION" },
     { value: "10+", label: "SKILLS MASTERED" },
   ];

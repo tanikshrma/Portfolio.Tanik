@@ -11,6 +11,16 @@ import sashasHolidayVillageImg from "../assets/images/Sashas Holiday Village.web
 import theArtiquetteImg from "../assets/images/The Artiquette.webp";
 import vivedaEssentialsImg from "../assets/images/Viveda Essentials.webp";
 import worldsportsgroupImg from "../assets/images/WSG Website.webp"
+import luminaDentalImg from "../assets/images/Lumina Dental.webp";
+import cardinalHotelsImg from "../assets/images/Cardinal Hotels & Resorts.webp";
+
+const avifImages = import.meta.glob("../assets/images/avif/*.avif", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const getAvifImage = (name) => avifImages[`../assets/images/avif/${name}`];
 
 const LazyProjectImage = memo(function LazyProjectImage({ project }) {
   const imageRef = useRef(null);
@@ -41,16 +51,23 @@ const LazyProjectImage = memo(function LazyProjectImage({ project }) {
   }, []);
 
   return (
-    <img
-      ref={imageRef}
-      src={isNearViewport ? project.image : undefined}
-      alt={project.title}
-      width={project.imageWidth}
-      height={project.imageHeight}
-      loading="lazy"
-      decoding="async"
-      className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[10000ms] ease-in-out group-hover:object-bottom group-hover:scale-105 opacity-90 group-hover:opacity-100"
-    />
+    <picture>
+      <source
+        type="image/avif"
+        srcSet={isNearViewport ? `${project.imageAvifSmall} 480w, ${project.imageAvifLarge} 960w` : undefined}
+        sizes="(min-width: 1024px) 31vw, (min-width: 768px) 47vw, 100vw"
+      />
+      <img
+        ref={imageRef}
+        src={isNearViewport ? project.image : undefined}
+        alt={project.title}
+        width={project.imageWidth}
+        height={project.imageHeight}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[10000ms] ease-in-out group-hover:object-bottom group-hover:scale-105 opacity-90 group-hover:opacity-100"
+      />
+    </picture>
   );
 });
 
@@ -101,6 +118,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://jyotishnow.com/",
       image: jyotishNowImg,
+      imageAvifSmall: getAvifImage("JyotishNow-480.avif"),
+      imageAvifLarge: getAvifImage("JyotishNow-960.avif"),
       imageWidth: 1200,
       imageHeight: 6897,
     },
@@ -108,10 +127,12 @@ export default function Work() {
       id: "2",
       title: "Royal Haveli",
       category: "web",
-      categoryLabel: "REACT + AI WEBSITE",
-      type: "Live Website (React & AI)",
+      categoryLabel: "WEBSITE DEVELOPMENT",
+      type: "Live Website",
       url: "https://royalhavelisj.com/",
       image: royalHaveliImg,
+      imageAvifSmall: getAvifImage("Royal-Haveli-480.avif"),
+      imageAvifLarge: getAvifImage("Royal-Haveli-960.avif"),
       imageWidth: 1200,
       imageHeight: 4542,
     },
@@ -123,6 +144,8 @@ export default function Work() {
       type: "Figma UI Design",
       url: "https://www.figma.com",
       image: industrialPowerupImg,
+      imageAvifSmall: getAvifImage("Industrial-Powerup-480.avif"),
+      imageAvifLarge: getAvifImage("Industrial-Powerup-960.avif"),
       imageWidth: 1200,
       imageHeight: 4613,
     },
@@ -134,6 +157,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://sashasholidayvillage.com/",
       image: sashasHolidayVillageImg,
+      imageAvifSmall: getAvifImage("Sashas-Holiday-Village-480.avif"),
+      imageAvifLarge: getAvifImage("Sashas-Holiday-Village-960.avif"),
       imageWidth: 1200,
       imageHeight: 8578,
     },
@@ -145,6 +170,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://theartiquette.com/",
       image: theArtiquetteImg,
+      imageAvifSmall: getAvifImage("The-Artiquette-480.avif"),
+      imageAvifLarge: getAvifImage("The-Artiquette-960.avif"),
       imageWidth: 1200,
       imageHeight: 4576,
     },
@@ -156,6 +183,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://pankajtailor.in/",
       image: pankajTailorImg,
+      imageAvifSmall: getAvifImage("Pankaj-Tailor-480.avif"),
+      imageAvifLarge: getAvifImage("Pankaj-Tailor-960.avif"),
       imageWidth: 1200,
       imageHeight: 4347,
     },
@@ -167,6 +196,8 @@ export default function Work() {
       type: "Figma Design",
       url: "https://www.figma.com/design/Ez4Bbr1HnnO2q2ZMbz7FJ2/Little-Notes?node-id=0-1&p=f&t=4m9BpI6WIQuWICxc-0",
       image: littleNotesImg,
+      imageAvifSmall: getAvifImage("Little-Notes-480.avif"),
+      imageAvifLarge: getAvifImage("Little-Notes-960.avif"),
       imageWidth: 1200,
       imageHeight: 5365,
     },
@@ -178,6 +209,8 @@ export default function Work() {
       type: "Figma Design",
       url: "https://www.figma.com/design/XP8t7QZRBzCnfZi23sx2HD/Viveda-Essentials?t=4m9BpI6WIQuWICxc-0",
       image: vivedaEssentialsImg,
+      imageAvifSmall: getAvifImage("Viveda-Essentials-480.avif"),
+      imageAvifLarge: getAvifImage("Viveda-Essentials-960.avif"),
       imageWidth: 1200,
       imageHeight: 4399,
     },
@@ -189,6 +222,8 @@ export default function Work() {
       type: "Figma Design",
       url: "https://www.figma.com/design/KvCO76r9j5NmkqotHuqL42/Sashas-Website?t=4m9BpI6WIQuWICxc-0",
       image: sashasHolidayVillageImg,
+      imageAvifSmall: getAvifImage("Sashas-Holiday-Village-480.avif"),
+      imageAvifLarge: getAvifImage("Sashas-Holiday-Village-960.avif"),
       imageWidth: 1200,
       imageHeight: 8578,
     },
@@ -200,8 +235,36 @@ export default function Work() {
       type: "Live Website",
       url: "https://wsg-website-xi.vercel.app/",
       image: worldsportsgroupImg,
+      imageAvifSmall: getAvifImage("WSG-Website-480.avif"),
+      imageAvifLarge: getAvifImage("WSG-Website-960.avif"),
       imageWidth: 1200,
       imageHeight: 5961,
+    },
+    {
+      id: "11",
+      title: "Lumina Dental",
+      category: "web",
+      categoryLabel: "WEBSITE DEVELOPMENT",
+      type: "Live Website",
+      url: "https://luminadentalmohali.com/",
+      image: luminaDentalImg,
+      imageAvifSmall: getAvifImage("Lumina-Dental-480.avif"),
+      imageAvifLarge: getAvifImage("Lumina-Dental-960.avif"),
+      imageWidth: 1200,
+      imageHeight: 6866,
+    },
+    {
+      id: "12",
+      title: "Cardinal Hotels & Resorts",
+      category: "web",
+      categoryLabel: "WEBSITE DEVELOPMENT",
+      type: "Luxury Hospitality Website",
+      url: "https://cardinalhotels.com/",
+      image: cardinalHotelsImg,
+      imageAvifSmall: getAvifImage("Cardinal-Hotels-Resorts-480.avif"),
+      imageAvifLarge: getAvifImage("Cardinal-Hotels-Resorts-960.avif"),
+      imageWidth: 1200,
+      imageHeight: 8881,
     },
   ], []);
 
