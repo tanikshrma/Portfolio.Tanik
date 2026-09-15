@@ -103,6 +103,7 @@ export default function About() {
             </p>
             <p>
              I work with HTML, CSS, JavaScript, React, Tailwind CSS, WordPress, and Figma, turning ideas into polished digital experiences that are built to look great and work seamlessly across devices.
+             </p>
           </div>
           <div className="text-3xl font-['Playfair_Display'] italic text-gray-300 mb-12 lg:mb-0">Tanik Sharma</div>
         </div>
