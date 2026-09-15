@@ -5,6 +5,8 @@ export interface Project {
   categoryLabel: string;
   year?: string;
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   url: string;
   type: string;
 }

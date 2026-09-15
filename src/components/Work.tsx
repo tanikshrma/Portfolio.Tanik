@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Project } from "../types";
 
 import industrialPowerupImg from "../assets/images/Industrial Powerup.webp";
@@ -25,6 +25,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://jyotishnow.com/",
       image: jyotishNowImg,
+      imageWidth: 1200,
+      imageHeight: 6897,
     },
     {
       id: "2",
@@ -34,6 +36,8 @@ export default function Work() {
       type: "Live Website (React & AI)",
       url: "https://royalhavelisj.com/",
       image: royalHaveliImg,
+      imageWidth: 1200,
+      imageHeight: 4542,
     },
     {
       id: "3",
@@ -43,6 +47,8 @@ export default function Work() {
       type: "Figma UI Design",
       url: "https://www.figma.com",
       image: industrialPowerupImg,
+      imageWidth: 1200,
+      imageHeight: 4613,
     },
     {
       id: "4",
@@ -52,6 +58,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://sashasholidayvillage.com/",
       image: sashasHolidayVillageImg,
+      imageWidth: 1200,
+      imageHeight: 8578,
     },
     {
       id: "5",
@@ -61,6 +69,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://theartiquette.com/",
       image: theArtiquetteImg,
+      imageWidth: 1200,
+      imageHeight: 4576,
     },
     {
       id: "6",
@@ -70,6 +80,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://pankajtailor.in/",
       image: pankajTailorImg,
+      imageWidth: 1200,
+      imageHeight: 4347,
     },
     {
       id: "7",
@@ -79,6 +91,8 @@ export default function Work() {
       type: "Figma Design",
       url: "https://www.figma.com/design/Ez4Bbr1HnnO2q2ZMbz7FJ2/Little-Notes?node-id=0-1&p=f&t=4m9BpI6WIQuWICxc-0",
       image: littleNotesImg,
+      imageWidth: 1200,
+      imageHeight: 5365,
     },
     {
       id: "8",
@@ -88,6 +102,8 @@ export default function Work() {
       type: "Figma Design",
       url: "https://www.figma.com/design/XP8t7QZRBzCnfZi23sx2HD/Viveda-Essentials?t=4m9BpI6WIQuWICxc-0",
       image: vivedaEssentialsImg,
+      imageWidth: 1200,
+      imageHeight: 4399,
     },
     {
       id: "9",
@@ -97,6 +113,8 @@ export default function Work() {
       type: "Figma Design",
       url: "https://www.figma.com/design/KvCO76r9j5NmkqotHuqL42/Sashas-Website?t=4m9BpI6WIQuWICxc-0",
       image: sashasHolidayVillageImg,
+      imageWidth: 1200,
+      imageHeight: 8578,
     },
     {
       id: "10",
@@ -106,6 +124,8 @@ export default function Work() {
       type: "Live Website",
       url: "https://wsg-website-xi.vercel.app/",
       image: worldsportsgroupImg,
+      imageWidth: 1200,
+      imageHeight: 5961,
     },
   ];
 
@@ -163,7 +183,10 @@ export default function Work() {
               <img 
                 src={project.image} 
                 alt={project.title}
+                width={project.imageWidth}
+                height={project.imageHeight}
                 loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[10000ms] ease-in-out group-hover:object-bottom group-hover:scale-105 opacity-90 group-hover:opacity-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />

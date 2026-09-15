@@ -67,7 +67,11 @@ export default function Hero() {
             <img 
               src={aboutMeImg} 
               alt="Tanik Portfolio Portrait"
+              width={976}
+              height={976}
+              loading="eager"
               fetchPriority="high"
+              decoding="async"
               className="w-full object-cover aspect-[4/5] shadow-2xl rounded-sm"
             />
             

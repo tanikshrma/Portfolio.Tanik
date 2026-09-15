@@ -41,7 +41,10 @@ export default function About() {
           <img 
             src={aboutPortraitImg} 
             alt="About Tanik"
+            width={976}
+            height={976}
             loading="lazy"
+            decoding="async"
             className="w-full object-cover aspect-[3/4] shadow-lg transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </motion.div>
