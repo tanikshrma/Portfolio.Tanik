@@ -70,7 +70,7 @@ export default function Resume() {
                   key={index}
                   className="relative pl-12"
                 >
-                  <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-red-600 ring-4 ring-gray-950 -translate-x-1/2" />
+                  <div className="absolute left-4 top-1.5 w-3 h-3 rounded-full bg-red-600 ring-4 ring-gray-950 -translate-x-1/2" />
                   <span className="inline-block px-3 py-1 bg-gray-900 border border-gray-800 text-[10px] font-bold text-red-500 tracking-widest mb-2">
                     {item.date}
                   </span>
@@ -101,7 +101,7 @@ export default function Resume() {
                   key={index}
                   className="relative pl-12"
                 >
-                  <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-red-600 ring-4 ring-gray-950 -translate-x-1/2" />
+                  <div className="absolute left-4 top-1.5 w-3 h-3 rounded-full bg-red-600 ring-4 ring-gray-950 -translate-x-1/2" />
                   <span className="inline-block px-3 py-1 bg-gray-900 border border-gray-800 text-[10px] font-bold text-red-500 tracking-widest mb-2">
                     {item.date}
                   </span>
