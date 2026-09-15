@@ -227,7 +227,7 @@ export default function Work() {
       category: "web",
       categoryLabel: "WEBSITE DEVELOPMENT",
       type: "Luxury Hospitality Website",
-      url: "https://cardinalhotels.com/",
+      url: "https://cardinal-landing-page.vercel.app",
       image: cardinalHotelsImg,
       imageAvifSmall: getAvifImage("Cardinal-Hotels-Resorts-480.avif"),
       imageAvifLarge: getAvifImage("Cardinal-Hotels-Resorts-960.avif"),

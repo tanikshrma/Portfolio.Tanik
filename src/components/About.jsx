@@ -4,10 +4,10 @@ import aboutPortraitImg from "../assets/images/Tanik.webp";
 
 export default function About() {
   const skills = [
-    { label: "WEB DESIGN & WORDPRESS", value: 95 },
+    { label: "WEB DESIGN & WORDPRESS", value: 97 },
     { label: "FRONT-END DEV (HTML/CSS/JS)", value: 92 },
-    { label: "UI/UX & FIGMA PROTOTYPING", value: 90 },
-    { label: "RESPONSIVE LAYOUTS & ANIMATIONS", value: 88 },
+    { label: "UI/UX & FIGMA PROTOTYPING", value: 95 },
+    { label: "RESPONSIVE LAYOUTS & ANIMATIONS", value: 97 },
   ];
   const sectionRef = useRef(null);
   const [hasStarted, setHasStarted] = useState(false);
@@ -99,13 +99,12 @@ export default function About() {
           </h2>
           <div className="space-y-4 text-gray-500 text-sm leading-relaxed mb-10">
             <p>
-              I'm Tanik Sharma, a web designer and front-end developer with a passion for minimal design, bold typography, and meaningful interactions.
+              I’m Tanik Sharma, a web designer and front-end developer who enjoys creating clean, modern, and user-friendly websites. I focus on thoughtful design, responsive layouts, and smooth interactions that make websites both visually appealing and easy to use.
             </p>
             <p>
-              I partner with brands and businesses to turn ideas into digital experiences that make a lasting impact.
-            </p>
+             I work with HTML, CSS, JavaScript, React, Tailwind CSS, WordPress, and Figma, turning ideas into polished digital experiences that are built to look great and work seamlessly across devices.
           </div>
-          <div className="text-4xl font-['Playfair_Display'] italic text-gray-300 mb-12 lg:mb-0">Tanik Sharma</div>
+          <div className="text-3xl font-['Playfair_Display'] italic text-gray-300 mb-12 lg:mb-0">Tanik Sharma</div>
         </div>
 
         {/* Center Image */}
