@@ -19,11 +19,10 @@ export default function Hero() {
               I'M <span className="text-red-600">TANIK SHARMA</span>
             </h2>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8">
-              I create successful responsive websites that are fast, easy to use, and built with best practices. Specialized in front-end development, HTML, CSS, JS, custom plugins, and interactive web layouts.
+              I create responsive, fast, and user-friendly websites with a focus on clean design and a smooth user experience. I work with HTML, CSS, JavaScript, React, Tailwind CSS, WordPress, and Figma to design and build modern websites that look great, work smoothly, and perform well across all devices.
             </p>
-            
-            <a 
-              href="#portfolio" 
+            <a
+              href="#portfolio"
               onClick={(e) => {
                 e.preventDefault();
                 const el = document.querySelector("#portfolio");
@@ -43,10 +42,10 @@ export default function Hero() {
         <div className="lg:col-span-5 relative flex justify-end">
           {/* Red background element */}
           <div className="absolute right-0 top-0 w-3/4 h-[120%] bg-red-600" />
-          
+
           <div className="relative z-10 w-full">
-            <img 
-              src={aboutMeImg} 
+            <img
+              src={aboutMeImg}
               alt="Tanik Portfolio Portrait"
               width={976}
               height={976}
@@ -55,7 +54,7 @@ export default function Hero() {
               decoding="async"
               className="w-full object-cover aspect-[4/5] shadow-2xl rounded-sm"
             />
-            
+
             {/* Location Tag */}
             <div className="absolute top-8 right-8 text-white text-[10px] font-bold tracking-widest text-right">
               BASED IN<br />HAMIRPUR, HIMACHAL PRADESH
@@ -73,7 +72,7 @@ export default function Hero() {
                 />
                 <text fill="#111827" fontSize="5.8" fontWeight="700" className="uppercase">
                   <textPath href="#heroBadgePath" startOffset="0%" textLength="232.5" lengthAdjust="spacing">
-                    • AVAILABLE FOR FREELANCE • WEB DESIGN • UI/UX • BRANDING 
+                    • AVAILABLE FOR FREELANCE • WEB DESIGN • UI/UX • BRANDING
                   </textPath>
                 </text>
               </svg>
