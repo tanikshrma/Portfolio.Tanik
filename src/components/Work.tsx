@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ExternalLink } from "lucide-react";
 import { Project } from "../types";
@@ -13,10 +13,87 @@ import theArtiquetteImg from "../assets/images/The Artiquette.webp";
 import vivedaEssentialsImg from "../assets/images/Viveda Essentials.webp";
 import worldsportsgroupImg from "../assets/images/WSG Website.webp"
 
+const LazyProjectImage = memo(function LazyProjectImage({ project }: { project: Project }) {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [isNearViewport, setIsNearViewport] = useState(false);
+
+  useEffect(() => {
+    const image = imageRef.current;
+
+    if (!image) {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      setIsNearViewport(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsNearViewport(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "600px 0px" });
+
+    observer.observe(image);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <img
+      ref={imageRef}
+      src={isNearViewport ? project.image : undefined}
+      alt={project.title}
+      width={project.imageWidth}
+      height={project.imageHeight}
+      loading="lazy"
+      decoding="async"
+      className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[10000ms] ease-in-out group-hover:object-bottom group-hover:scale-105 opacity-90 group-hover:opacity-100"
+    />
+  );
+});
+
+const ProjectCard = memo(function ProjectCard({ project }: { project: Project }) {
+  return (
+    <motion.a
+      layout
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.3 }}
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex flex-col bg-gray-950 overflow-hidden aspect-[4/5] border border-gray-800 shadow-xl rounded-sm"
+      data-cursor="view"
+    >
+      <LazyProjectImage project={project} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+
+      <div className="relative z-10 p-8 h-full flex flex-col justify-end">
+        <div>
+          <span className="inline-block text-[10px] font-bold tracking-widest uppercase bg-red-600 text-white px-3 py-1 mb-4 shadow-md">
+            {project.categoryLabel}
+          </span>
+          <h3 className="text-3xl lg:text-4xl font-['Anton'] text-white leading-tight uppercase mb-2 group-hover:text-red-500 transition-colors">
+            {project.title}
+          </h3>
+          <div className="flex items-center gap-1.5 text-xs font-bold text-gray-300">
+            <span>{project.type}</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </div>
+        </div>
+      </div>
+    </motion.a>
+  );
+});
+
 export default function Work() {
   const [filter, setFilter] = useState<'all' | 'graphic' | 'web'>('all');
 
-  const projects: Project[] = [
+  const projects = useMemo<Project[]>(() => [
     {
       id: "1",
       title: "JyotishNow",
@@ -127,7 +204,7 @@ export default function Work() {
       imageWidth: 1200,
       imageHeight: 5961,
     },
-  ];
+  ], []);
 
   const filteredProjects = filter === 'all' 
     ? projects 
@@ -167,45 +244,7 @@ export default function Work() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
-            <motion.a
-              key={project.id}
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col bg-gray-950 overflow-hidden aspect-[4/5] border border-gray-800 shadow-xl rounded-sm"
-              data-cursor="view"
-            >
-              <img 
-                src={project.image} 
-                alt={project.title}
-                width={project.imageWidth}
-                height={project.imageHeight}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[10000ms] ease-in-out group-hover:object-bottom group-hover:scale-105 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
-
-              <div className="relative z-10 p-8 h-full flex flex-col justify-end">
-                <div>
-                  <span className="inline-block text-[10px] font-bold tracking-widest uppercase bg-red-600 text-white px-3 py-1 mb-4 shadow-md">
-                    {project.categoryLabel}
-                  </span>
-                  <h3 className="text-3xl lg:text-4xl font-['Anton'] text-white leading-tight uppercase mb-2 group-hover:text-red-500 transition-colors">
-                    {project.title}
-                  </h3>
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-gray-300">
-                    <span>{project.type}</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              </div>
-            </motion.a>
+            <ProjectCard key={project.id} project={project} />
           ))}
         </AnimatePresence>
       </div>
