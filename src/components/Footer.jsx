@@ -97,7 +97,7 @@ export default function Footer() {
                 WhatsApp
               </a>
               <a 
-                href="https://github.com/taniksharma29" 
+                href="https://github.com/tanikshrma" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:text-red-600 transition-colors flex items-center gap-1.5"
