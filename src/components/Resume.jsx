@@ -9,7 +9,7 @@ export default function Resume() {
       description: "Design and develop responsive websites using HTML, CSS, and JavaScript, Tailwind CSS, React, WordPress. Create modern UI/UX designs in Figma with a focus on performance, usability, and visual consistency."
     },
     {
-      date: "2024 - 2025",
+      date: "2023 - 2025",
       title: "WordPress Designer",
       institution: "S4 Web Services",
       description: "Designed and developed responsive WordPress websites based on client requirements. Created clean, user-friendly interfaces with a focus on usability and visual consistency. Customized themes, layouts, and functionality to deliver polished digital experiences."
