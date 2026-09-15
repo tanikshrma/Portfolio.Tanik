@@ -1,9 +1,8 @@
 import { motion } from "motion/react";
 import { GraduationCap, Briefcase } from "lucide-react";
-import { TimelineItem } from "../types";
 
 export default function Resume() {
-  const education: TimelineItem[] = [
+  const education = [
     {
       date: "2022 - 2023",
       title: "Web Designing",
@@ -31,7 +30,7 @@ export default function Resume() {
     }
   ];
 
-  const experience: TimelineItem[] = [
+  const experience = [
     {
       date: "2025 - Present (1+ Year)",
       title: "Web Designer & Front-End Developer",

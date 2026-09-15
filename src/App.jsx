@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
@@ -14,11 +14,11 @@ import Resume from "./components/Resume";
 import Logos from "./components/Logos";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
-import { motion, useScroll, useSpring, Variants } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
 import Lenis from "lenis";
 
 // Staggered entrance animation variants for sections
-const sectionVariants: Variants = {
+const sectionVariants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -35,12 +35,7 @@ const sectionVariants: Variants = {
   },
 };
 
-interface SectionWrapperProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-function SectionWrapper({ children, className = "" }: SectionWrapperProps) {
+function SectionWrapper({ children, className = "" }) {
   return (
     <motion.div
       initial="hidden"
@@ -71,7 +66,7 @@ export default function App() {
       touchMultiplier: 1.5,
     });
 
-    function raf(time: number) {
+    function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }

@@ -9,7 +9,7 @@ This project is designed with a focus on performance, responsiveness, and a poli
 ## Tech Stack
 
 * React
-* TypeScript
+* JavaScript
 * Vite
 * Tailwind CSS
 * JavaScript / HTML / CSS
@@ -57,8 +57,8 @@ src/
 ├── components/
 ├── pages/
 ├── assets/
-├── App.tsx
-└── main.tsx
+├── App.jsx
+└── main.jsx
 
 public/
 ```

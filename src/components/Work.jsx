@@ -1,7 +1,6 @@
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ExternalLink } from "lucide-react";
-import { Project } from "../types";
 
 import industrialPowerupImg from "../assets/images/Industrial Powerup.webp";
 import jyotishNowImg from "../assets/images/JyotishNow.webp";
@@ -13,8 +12,8 @@ import theArtiquetteImg from "../assets/images/The Artiquette.webp";
 import vivedaEssentialsImg from "../assets/images/Viveda Essentials.webp";
 import worldsportsgroupImg from "../assets/images/WSG Website.webp"
 
-const LazyProjectImage = memo(function LazyProjectImage({ project }: { project: Project }) {
-  const imageRef = useRef<HTMLImageElement>(null);
+const LazyProjectImage = memo(function LazyProjectImage({ project }) {
+  const imageRef = useRef(null);
   const [isNearViewport, setIsNearViewport] = useState(false);
 
   useEffect(() => {
@@ -55,7 +54,7 @@ const LazyProjectImage = memo(function LazyProjectImage({ project }: { project: 
   );
 });
 
-const ProjectCard = memo(function ProjectCard({ project }: { project: Project }) {
+const ProjectCard = memo(function ProjectCard({ project }) {
   return (
     <motion.a
       layout
@@ -91,9 +90,9 @@ const ProjectCard = memo(function ProjectCard({ project }: { project: Project })
 });
 
 export default function Work() {
-  const [filter, setFilter] = useState<'all' | 'graphic' | 'web'>('all');
+  const [filter, setFilter] = useState('all');
 
-  const projects = useMemo<Project[]>(() => [
+  const projects = useMemo(() => [
     {
       id: "1",
       title: "JyotishNow",
@@ -228,7 +227,7 @@ export default function Work() {
           ].map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setFilter(tab.key as any)}
+              onClick={() => setFilter(tab.key)}
               className={`px-5 py-2.5 text-xs font-bold tracking-widest transition-all ${
                 filter === tab.key 
                   ? 'bg-black text-white' 

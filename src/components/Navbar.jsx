@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
@@ -11,7 +10,7 @@ export default function Navbar() {
     { name: "CONTACT", href: "#contact" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e, href) => {
     e.preventDefault();
     const targetElement = document.querySelector(href);
     if (targetElement) {
