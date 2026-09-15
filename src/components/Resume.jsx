@@ -2,6 +2,21 @@ import { motion } from "motion/react";
 import { GraduationCap, Briefcase } from "lucide-react";
 
 export default function Resume() {
+  const experience = [
+    {
+      date: "2025 - Present (1+ Year)",
+      title: "Web Designer & Front-End Developer",
+      institution: "Creative Monk",
+      description: "Design and develop responsive websites using HTML, CSS, and JavaScript, Tailwind CSS, React, WordPress. Create modern UI/UX designs in Figma with a focus on performance, usability, and visual consistency."
+    },
+    {
+      date: "2024 - 2025",
+      title: "WordPress Designer",
+      institution: "S4 Web Services",
+      description: "Designed and developed responsive WordPress websites based on client requirements. Created clean, user-friendly interfaces with a focus on usability and visual consistency. Customized themes, layouts, and functionality to deliver polished digital experiences."
+    }
+  ];
+
   const education = [
     {
       date: "2022 - 2023",
@@ -30,14 +45,6 @@ export default function Resume() {
     }
   ];
 
-  const experience = [
-    {
-      date: "2025 - Present (1+ Year)",
-      title: "Web Designer & Front-End Developer",
-      institution: "Creative Monk",
-      description: "Collaborated with clients to design responsive web layouts, custom WordPress solutions, AI-powered React web applications, and intuitive user interfaces."
-    }
-  ];
 
   return (
     <section id="resume" className="py-12 md:py-24 bg-gray-950 text-white overflow-hidden">
