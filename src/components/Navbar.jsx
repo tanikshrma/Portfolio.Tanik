@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Navbar() {
@@ -19,7 +18,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <a 
@@ -27,7 +26,7 @@ export default function Navbar() {
           onClick={(e) => handleNavClick(e, "body")}
           className="text-2xl font-black flex items-center gap-1 group"
         >
-          T<span className="text-red-600 group-hover:scale-125 transition-transform">.</span>
+          T<span className="text-red-600">.</span>
         </a>
 
         {/* Desktop Links (Hidden on Mobile) */}
@@ -45,9 +44,7 @@ export default function Navbar() {
         </div>
 
         {/* Action Button (Visible on Mobile & Desktop) */}
-        <motion.a
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+        <a
           href="https://api.whatsapp.com/send/?phone=918628819766&text&type=phone_number&app_absent=0"
           target="_blank"
           rel="noopener noreferrer"
@@ -55,7 +52,7 @@ export default function Navbar() {
           data-cursor="view"
         >
           LET'S TALK <ArrowUpRight className="w-4 h-4" />
-        </motion.a>
+        </a>
       </div>
     </nav>
   );

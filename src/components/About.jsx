@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Download } from "lucide-react";
 import aboutPortraitImg from "../assets/images/Tanik.webp";
 
@@ -31,13 +30,10 @@ export default function About() {
         </div>
 
         {/* Center Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        <div
           className="lg:col-span-4 relative group"
         >
-          <div className="absolute right-0 top-0 w-2/3 h-full bg-red-600 -z-10 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
+          <div className="absolute right-0 top-0 w-2/3 h-full bg-red-600 -z-10" />
           <img 
             src={aboutPortraitImg} 
             alt="About Tanik"
@@ -45,9 +41,9 @@ export default function About() {
             height={976}
             loading="lazy"
             decoding="async"
-            className="w-full object-cover aspect-[3/4] shadow-lg transition-transform duration-500 group-hover:scale-[1.02]"
+            className="w-full object-cover aspect-[3/4] shadow-lg"
           />
-        </motion.div>
+        </div>
 
         {/* Skills */}
         <div className="lg:col-span-4 flex flex-col justify-center h-full pt-12 lg:pt-0">
@@ -59,13 +55,7 @@ export default function About() {
                   <span>{skill.value}%</span>
                 </div>
                 <div className="h-[2px] bg-gray-100 w-full relative overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.value}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "easeOut", delay: index * 0.1 }}
-                    className="absolute top-0 left-0 h-full bg-red-600"
-                  />
+                  <div style={{ width: `${skill.value}%` }} className="absolute top-0 left-0 h-full bg-red-600" />
                 </div>
               </div>
             ))}

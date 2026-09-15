@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ShieldCheck } from "lucide-react";
 
 export default function Logos() {
@@ -90,14 +89,8 @@ export default function Logos() {
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none" />
 
       <div className="flex overflow-hidden group relative z-10">
-        <motion.div
+        <div
           className="flex items-center gap-16 whitespace-nowrap"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            ease: "linear",
-            duration: 80,
-            repeat: Infinity,
-          }}
         >
           {tickerItems.map((item, idx) => (
             <a
@@ -105,7 +98,7 @@ export default function Logos() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-6 group/item hover:scale-105 transition-transform duration-300"
+              className="inline-flex items-center gap-6 group/item"
               data-cursor="view"
             >
               <span className="text-3xl md:text-5xl font-['Anton'] tracking-wider uppercase text-gray-800 group-hover/item:text-black transition-colors">
@@ -117,7 +110,7 @@ export default function Logos() {
               <ShieldCheck className="w-6 h-6 text-gray-400 group-hover/item:text-black transition-colors" />
             </a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

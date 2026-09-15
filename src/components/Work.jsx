@@ -1,5 +1,4 @@
-import { memo, useEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { memo, useMemo, useState } from "react";
 import { ExternalLink } from "lucide-react";
 
 import industrialPowerupImg from "../assets/images/Industrial Powerup.webp";
@@ -23,62 +22,31 @@ const avifImages = import.meta.glob("../assets/images/avif/*.avif", {
 const getAvifImage = (name) => avifImages[`../assets/images/avif/${name}`];
 
 const LazyProjectImage = memo(function LazyProjectImage({ project }) {
-  const imageRef = useRef(null);
-  const [isNearViewport, setIsNearViewport] = useState(false);
-
-  useEffect(() => {
-    const image = imageRef.current;
-
-    if (!image) {
-      return;
-    }
-
-    if (!("IntersectionObserver" in window)) {
-      setIsNearViewport(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsNearViewport(true);
-        observer.disconnect();
-      }
-    }, { rootMargin: "600px 0px" });
-
-    observer.observe(image);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <picture>
-      <source
-        type="image/avif"
-        srcSet={isNearViewport ? `${project.imageAvifSmall} 480w, ${project.imageAvifLarge} 960w` : undefined}
-        sizes="(min-width: 1024px) 31vw, (min-width: 768px) 47vw, 100vw"
-      />
-      <img
-        ref={imageRef}
-        src={isNearViewport ? project.image : undefined}
-        alt={project.title}
-        width={project.imageWidth}
-        height={project.imageHeight}
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[10000ms] ease-in-out group-hover:object-bottom group-hover:scale-105 opacity-90 group-hover:opacity-100"
-      />
-    </picture>
+    <div className="absolute inset-0">
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={`${project.imageAvifSmall} 480w, ${project.imageAvifLarge} 960w`}
+          sizes="(min-width: 1024px) 31vw, (min-width: 768px) 47vw, 100vw"
+        />
+        <img
+          src={project.image}
+          alt={project.title}
+          width={project.imageWidth}
+          height={project.imageHeight}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100"
+        />
+      </picture>
+    </div>
   );
 });
 
 const ProjectCard = memo(function ProjectCard({ project }) {
   return (
-    <motion.a
-      layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.3 }}
+    <a
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
@@ -102,7 +70,7 @@ const ProjectCard = memo(function ProjectCard({ project }) {
           </div>
         </div>
       </div>
-    </motion.a>
+    </a>
   );
 });
 
@@ -291,7 +259,7 @@ export default function Work() {
             <button
               key={tab.key}
               onClick={() => setFilter(tab.key)}
-              className={`px-5 py-2.5 text-xs font-bold tracking-widest transition-all ${
+              className={`px-5 py-2.5 text-xs font-bold tracking-widest transition-colors ${
                 filter === tab.key 
                   ? 'bg-black text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -304,11 +272,9 @@ export default function Work() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </AnimatePresence>
+        {filteredProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
     </section>
   );

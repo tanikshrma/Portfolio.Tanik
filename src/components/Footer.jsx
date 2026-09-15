@@ -10,7 +10,7 @@ export default function Footer() {
         
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24 relative z-10 flex flex-col items-center text-center">
           <div className="flex items-center justify-center gap-3 mb-10">
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-red-600"></span>
             <span className="text-[11px] font-bold tracking-[0.3em] text-red-500 uppercase">
               AVAILABLE FOR NEW PROJECTS
             </span>
@@ -18,7 +18,7 @@ export default function Footer() {
           
           <h2 className="text-5xl sm:text-7xl lg:text-[7rem] xl:text-[8rem] font-['Anton'] text-white leading-[1] uppercase tracking-tight mb-8">
             LET'S CREATE <br />
-            <span className="text-transparent [-webkit-text-stroke:1px_#71717a] sm:[-webkit-text-stroke:2px_#71717a] hover:text-white transition-colors duration-500 cursor-default">SOMETHING GREAT</span> <br />
+            <span className="text-transparent [-webkit-text-stroke:1px_#71717a] sm:[-webkit-text-stroke:2px_#71717a] hover:text-white transition-colors cursor-default">SOMETHING GREAT</span> <br />
             TOGETHER.
           </h2>
           
@@ -30,10 +30,10 @@ export default function Footer() {
             href="https://api.whatsapp.com/send/?phone=918628819766&text&type=phone_number&app_absent=0" 
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-6 bg-red-600 text-white hover:bg-white hover:text-black px-8 py-4 md:px-10 md:py-5 rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(220,38,38,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+            className="group relative inline-flex items-center gap-6 bg-red-600 text-white hover:bg-white hover:text-black px-8 py-4 md:px-10 md:py-5 rounded-full transition-colors"
           >
             <span className="text-lg md:text-xl font-['Anton'] tracking-widest uppercase mt-1">SAY HELLO</span>
-            <div className="w-10 h-10 rounded-full bg-black/20 group-hover:bg-black/10 flex items-center justify-center transition-transform group-hover:rotate-45">
+            <div className="w-10 h-10 rounded-full bg-black/20 group-hover:bg-black/10 flex items-center justify-center">
               <ArrowUpRight className="w-5 h-5" />
             </div>
           </a>

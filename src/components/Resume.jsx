@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { GraduationCap, Briefcase } from "lucide-react";
 
 export default function Resume() {
@@ -67,12 +66,8 @@ export default function Resume() {
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-gray-800">
               {experience.map((item, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
                   className="relative pl-12"
                 >
                   <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-red-600 ring-4 ring-gray-950 -translate-x-1/2" />
@@ -86,7 +81,7 @@ export default function Resume() {
                       {item.description}
                     </p>
                   )}
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -102,12 +97,8 @@ export default function Resume() {
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-gray-800">
               {education.map((item, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
                   className="relative pl-12"
                 >
                   <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-red-600 ring-4 ring-gray-950 -translate-x-1/2" />
@@ -116,7 +107,7 @@ export default function Resume() {
                   </span>
                   <h4 className="text-xl font-bold text-white mb-1">{item.title}</h4>
                   <h5 className="text-sm font-medium text-gray-400">{item.institution}</h5>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

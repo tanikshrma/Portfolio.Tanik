@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SectionSkeleton() {
   return (
-    <div className="w-full max-w-7xl mx-auto px-6 py-24 animate-pulse">
+    <div className="w-full max-w-7xl mx-auto px-6 py-24">
       {/* Header Skeleton */}
       <div className="flex flex-col items-start gap-4 mb-16">
         <div className="flex items-center gap-2">
@@ -25,7 +25,6 @@ export default function SectionSkeleton() {
 
             {/* Thumbnail / Image Area Skeleton */}
             <div className="w-full aspect-[4/3] bg-gray-200 rounded-sm mb-6 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
             </div>
 
             {/* Tag / Category Skeleton */}

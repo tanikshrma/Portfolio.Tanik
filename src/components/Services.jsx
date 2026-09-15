@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Monitor, PenTool, Code2, Cpu, ArrowUpRight } from "lucide-react";
 
 export default function Services() {
@@ -49,13 +48,9 @@ export default function Services() {
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {services.map((service, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative bg-gray-50 hover:bg-black text-gray-900 hover:text-white p-8 md:p-10 transition-all duration-300 border border-gray-200 hover:border-black flex flex-col justify-between shadow-sm hover:shadow-2xl"
+            className="group relative bg-gray-50 hover:bg-black text-gray-900 hover:text-white p-8 md:p-10 transition-colors border border-gray-200 hover:border-black flex flex-col justify-between shadow-sm"
           >
             {/* Top Bar: Number & Icon */}
             <div>
@@ -63,7 +58,7 @@ export default function Services() {
                 <span className="text-2xl font-['Anton'] text-red-600 group-hover:text-red-500 transition-colors">
                   {service.number}
                 </span>
-                <div className="w-12 h-12 rounded-full border border-gray-300 group-hover:border-gray-700 bg-white group-hover:bg-red-600 text-gray-800 group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:rotate-45">
+                <div className="w-12 h-12 rounded-full border border-gray-300 group-hover:border-gray-700 bg-white group-hover:bg-red-600 text-gray-800 group-hover:text-white flex items-center justify-center">
                   <ArrowUpRight className="w-5 h-5" />
                 </div>
               </div>
@@ -88,7 +83,7 @@ export default function Services() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
