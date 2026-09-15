@@ -89,9 +89,7 @@ export default function Logos() {
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none" />
 
       <div className="flex overflow-hidden group relative z-10">
-        <div
-          className="flex items-center gap-16 whitespace-nowrap"
-        >
+        <div className="marquee-track flex flex-none items-center gap-16 whitespace-nowrap">
           {tickerItems.map((item, idx) => (
             <a
               key={`${item.name}-${idx}`}

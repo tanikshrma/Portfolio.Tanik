@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
 import aboutPortraitImg from "../assets/images/Tanik.webp";
 
@@ -8,9 +9,87 @@ export default function About() {
     { label: "UI/UX & FIGMA PROTOTYPING", value: 90 },
     { label: "RESPONSIVE LAYOUTS & ANIMATIONS", value: 88 },
   ];
+  const sectionRef = useRef(null);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [displayValues, setDisplayValues] = useState(() => skills.map(() => 0));
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    let frameId;
+    let observer;
+
+    const startIfVisible = () => {
+      if (frameId) {
+        return;
+      }
+
+      frameId = requestAnimationFrame(() => {
+        frameId = undefined;
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setHasStarted(true);
+          window.removeEventListener("scroll", startIfVisible);
+          observer?.disconnect();
+        }
+      });
+    };
+
+    window.addEventListener("scroll", startIfVisible, { passive: true });
+    startIfVisible();
+
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          window.removeEventListener("scroll", startIfVisible);
+          observer.disconnect();
+        }
+      }, { threshold: 0 });
+
+      observer.observe(section);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", startIfVisible);
+      observer?.disconnect();
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) {
+      return;
+    }
+
+    const duration = 1000;
+    const startTime = performance.now();
+    let frameId;
+
+    const updateValues = (time) => {
+      const progress = Math.min((time - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      setDisplayValues(skills.map((skill) => Math.round(skill.value * easedProgress)));
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(updateValues);
+      }
+    };
+
+    frameId = requestAnimationFrame(updateValues);
+
+    return () => cancelAnimationFrame(frameId);
+  }, [hasStarted]);
 
   return (
-    <section id="about" className="py-12 md:py-24 max-w-7xl mx-auto px-4 md:px-8 overflow-hidden bg-white">
+    <section ref={sectionRef} id="about" className="py-12 md:py-24 max-w-7xl mx-auto px-4 md:px-8 overflow-hidden bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         {/* Biography */}
         <div className="lg:col-span-4">
@@ -52,10 +131,16 @@ export default function About() {
               <div key={index}>
                 <div className="flex justify-between text-[10px] font-bold tracking-widest uppercase mb-2">
                   <span>{skill.label}</span>
-                  <span>{skill.value}%</span>
+                  <span>{displayValues[index]}%</span>
                 </div>
                 <div className="h-[2px] bg-gray-100 w-full relative overflow-hidden">
-                  <div style={{ width: `${skill.value}%` }} className="absolute top-0 left-0 h-full bg-red-600" />
+                  <div
+                    style={{
+                      width: `${hasStarted ? skill.value : 0}%`,
+                      transition: "width 1000ms cubic-bezier(0.215, 0.61, 0.355, 1)",
+                    }}
+                    className="absolute top-0 left-0 h-full bg-red-600"
+                  />
                 </div>
               </div>
             ))}
